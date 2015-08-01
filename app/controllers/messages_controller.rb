@@ -1,21 +1,26 @@
 class MessagesController < ActionController::Base
   def index
-    @messages = Messages.new
+    @messages = Message.new
+    render_json_api messages
   end
 
   def show
     @message = Message.find (message_params)
+    render_json_api users
   end
 
   def create
     @message = Message.new
+    render_json_api users
   end
 
   def new
     @message = Message.new(message_params)
     if @message.save
-      flash [:notice] = "You hash has been posted"
+      flash[:notice] = "You hash has been posted"
       redirect_to message_path(@message)
+    end
+    render_json_api users
   end
 
   private

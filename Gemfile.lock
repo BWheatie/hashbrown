@@ -38,6 +38,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_follower (0.2.1)
     arel (6.0.2)
     bcrypt (3.1.10)
     builder (3.2.2)
@@ -59,6 +60,8 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    doorkeeper (3.0.0)
+      railties (>= 3.2)
     erubis (2.7.0)
     execjs (2.5.2)
     factory_girl (4.5.0)
@@ -176,9 +179,11 @@ DEPENDENCIES
   actionmailer
   active_model_serializers (= 0.10.0.rc2)
   activerecord
+  acts_as_follower
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  doorkeeper
   factory_girl_rails
   faker
   foreman
