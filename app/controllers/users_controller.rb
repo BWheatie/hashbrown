@@ -1,27 +1,27 @@
-class UsersController < ActionController::Base
-
+class UsersController < ActionController::API
 
   def index
-    authenticate_user!
-    @users = User.all
-    render_json_api users
+    render json: @users
   end
 
   def show
     authenticate_user!
     @user = User.find(params[:id])
     raise UnauthorizedError unless current_user.id == user.id
-    render_json_api users
+    render json: @users
   end
 
   def new
     @user = User.new
-    render_json_api users
   end
 
   def create
     @user = User.new(user_params)
-    render_json_api users
+    if user.save
+      render json: @user
+    else
+      render json: {errors: user.errors}, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -29,15 +29,26 @@ class UsersController < ActionController::Base
     user = User.find(params[:id])
     raise UnauthorizedError unless current_user.id == user.id
     user.update(user_params)
-    render_json_api user
+    render json: @user
   end
 
   def destroy
     @user.destroy
-    flash[:notice] = "Your account has been deleted"
     redirect_to user_path
-    render_json_api users
+    render json: @users
   end
+
+  def follow
+    @user = User.find(params[:id])
+    current_user
+    current_user.follow(@user)
+    RecommenderMailer.new_follower(@user).deliver if @user.notify_new_follower
+  end
+
+def unfollow
+  @user = User.find(params[:id])
+  current_user.stop_following(@user)
+end
 
   private
   def user

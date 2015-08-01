@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::Serialization
-  UnauthenticatedError     = Class.new(ActionController::ActionControllerError)
-  UnauthorizedError     = Class.new(ActionController::ActionControllerError)
+  UnauthenticatedError = Class.new(ActionController::ActionControllerError)
+  UnauthorizedError = Class.new(ActionController::ActionControllerError)
   rescue_from UnauthenticatedError, with: :unauthenticated
   rescue_from UnauthorizedError, with: :unauthorized
 

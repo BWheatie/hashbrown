@@ -1,4 +1,4 @@
-class PagesController < ActionController::Base
+class PagesController < ActionController::API
 
   def index
     @user = User.new

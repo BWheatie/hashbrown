@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   use_doorkeeper
-  resources :users
+  devise_for :users
+  resources :users do
+    get :messages
+    put :follow
+    put :unfollow
+  end
+
   resources :messages
 
   root 'users#index'
