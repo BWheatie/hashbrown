@@ -6,6 +6,8 @@ gem 'rails-api'
 gem 'activerecord'
 gem 'actionmailer'
 gem 'active_model_serializers', '0.10.0.rc2'
+gem 'devise'
+gem 'faker'
 gem 'pg'
 gem 'puma'
 gem 'kaminari'
@@ -16,6 +18,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'rspec-rails'
 
 group :production do
   gem 'rails_12factor'
@@ -23,4 +26,5 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'foreman'
+  gem 'factory_girl_rails'
 end
