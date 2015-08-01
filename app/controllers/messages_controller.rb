@@ -5,7 +5,7 @@ class MessagesController < ActionController::API
   end
 
   def show
-    @message = Message.find (message_params)
+    @message = Message.find(params[:id])
     render json: @messages
   end
 
