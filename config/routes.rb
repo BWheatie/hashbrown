@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   use_doorkeeper
-  devise_for :users
-  resources :users do
-    get :messages
+
+  resources :users, except: [:new, :edit] do
+    resources :messages, only: [:index]
     put :follow
     put :unfollow
   end
 
-  resources :messages
+  resources :messages, except: [:new, :edit]
 
-  root 'users#index'
+  root 'pages#home'
 
   match "/404" => "errors#not_found", via: :all
   match "/500" => "errors#exception", via: :all

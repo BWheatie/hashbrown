@@ -1,10 +1,5 @@
 class PagesController < ActionController::API
-
-  def index
-    @user = User.new
-  end
-
-  def users
-    @user = Users.all
+  def home
+    render text: "Welcome to Hashbrown!"
   end
 end

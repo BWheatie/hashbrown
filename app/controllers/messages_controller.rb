@@ -1,6 +1,10 @@
 class MessagesController < ActionController::API
   def index
-    @messages = Message.new
+    if params[:user_id]
+      @messages = Message.where(user_id: params[:user_id])
+    else
+      @messages = Message.all
+    end
     render json: @messages
   end
 
