@@ -17,6 +17,11 @@ gem 'skylight'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rspec-rails'
 
+group :test do
+  gem 'simplecov', :require => false
+  gem "codeclimate-test-reporter", require: nil
+end
+
 group :production do
   gem 'rails_12factor'
 end
