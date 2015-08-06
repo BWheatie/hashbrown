@@ -3,6 +3,6 @@ script:
   - script/test
 rvm:
   - 2.2.2
-  addons:
+addons:
   code_climate:
     repo_token: LF5RixnUbysn4VGtMeyK
